@@ -7,8 +7,8 @@
 		<artifactId>roadshow</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>roadshow-api</artifactId>
-	<name>roadshow-api</name>
+	<artifactId>roadshow-app</artifactId>
+	<name>roadshow-app</name>
 	<packaging>jar</packaging>
 	
 </project>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd"
+    >
+    <bean id="regexpAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"
+    	p:advice-ref="greetingAdvice">
+    	<property name="patterns">
+    		<list>
+    			<!-- 用正则表达式，只对greeTo方法进行增强 -->
+    			<value>.*greeT.*</value>
+    		</list>
+    	</property>	
+    </bean>
+    <bean id="waiter" class="com.cl.roadshow.spring.aop.advice.NaiveWaiter"/>
+	<bean id="greetingAdvice" class="com.cl.roadshow.spring.aop.advice.GreetingBeforeAdvice"/>
+	<!-- 开启自动切面代理 -->
+	<!-- <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/> -->
+	
+	<!-- 开启自动切面代理 -->
+	<!-- true:代表使用cglib进行动态代理 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+</beans>

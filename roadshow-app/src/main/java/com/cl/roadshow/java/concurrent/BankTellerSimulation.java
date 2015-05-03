@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 用Java SE5新增的用来解决并发问题的类来实现仿真程序：银行出纳 *
+ * 用Java SE5新增的用来解决并发问题的类来实现仿真程序：银行出纳
  * 
  */
 public class BankTellerSimulation {

@@ -9,7 +9,7 @@ import net.sf.cglib.proxy.MethodProxy;
 /**
  * Spring实现AOP依赖两种底层技术：JDK动态代理和CgLib字节码增强
  * 
- * 演示Cglib动态代理实现AOP的基本原理
+ * 演示CgLib动态代理L实现AOP的基本原理
  */
 public class CgLibProxyDemo {
 	public static void main(String[] args) throws Exception {

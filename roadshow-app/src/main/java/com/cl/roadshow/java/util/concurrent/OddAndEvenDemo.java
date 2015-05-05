@@ -1,4 +1,4 @@
-package com.cl.roadshow.java.concurrent;
+package com.cl.roadshow.java.util.concurrent;
 
 /**
  * Java并发仿真程序：一个线程打印奇数，另一个线程打印偶数

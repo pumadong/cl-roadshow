@@ -1,4 +1,4 @@
-package com.cl.roadshow.java.concurrent;
+package com.cl.roadshow.java.util.concurrent;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import sun.misc.Unsafe;
 
@@ -12,6 +14,7 @@ import sun.misc.Unsafe;
  * 演示Java并发的几种实现方法，演示CAS算法的原理
  *
  */
+@SuppressWarnings("restriction")
 public class CompareAndSwapDemo {
 
 	private static int factorialUnSafe;
@@ -19,9 +22,11 @@ public class CompareAndSwapDemo {
 	private static int factorialCas;
 	private static long factorialCasOffset;
 	private static AtomicInteger factorialAtomic = new AtomicInteger(0);
+	private static int factorialReentrantLock = 0;
+	private static Lock reentrantLock = new ReentrantLock();
 
 	private static int SIZE = 200;
-	private static CountDownLatch latch = new CountDownLatch(SIZE * 4);
+	private static CountDownLatch latch = new CountDownLatch(SIZE * 5);
 
 	private static Object lock = new Object();
 	private static Unsafe unsafe;
@@ -29,6 +34,7 @@ public class CompareAndSwapDemo {
 	// 获取CasTest的静态Field的内存偏移量
 	static {
 		try {
+
 			Field field = Unsafe.class.getDeclaredField("theUnsafe");
 			field.setAccessible(true);
 			unsafe = (Unsafe) field.get(null);
@@ -50,6 +56,7 @@ public class CompareAndSwapDemo {
 			new Thread(new IncreamSafe()).start();
 			new Thread(new IncreamCas()).start();
 			new Thread(new IncreamAtomic()).start();
+			new Thread(new IncreamReentrantLock()).start();
 		}
 
 		latch.await();
@@ -57,6 +64,7 @@ public class CompareAndSwapDemo {
 		System.out.println("IncreamSafe Result：" + factorialMax.get("safe"));
 		System.out.println("IncreamCas Result：" + factorialMax.get("cas"));
 		System.out.println("IncreamAtomic Result：" + factorialMax.get("atomic"));
+		System.out.println("IncreamReentrantLock Result：" + factorialMax.get("reentrant"));
 	}
 
 	/**
@@ -65,6 +73,7 @@ public class CompareAndSwapDemo {
 	 */
 	static class IncreamUnSafe implements Runnable {
 
+		@Override
 		public void run() {
 			for (int j = 0; j < 1000; j++) {
 				factorialUnSafe++;
@@ -80,6 +89,7 @@ public class CompareAndSwapDemo {
 	 */
 	static class IncreamSafe implements Runnable {
 
+		@Override
 		public void run() {
 			synchronized (lock) {
 				for (int j = 0; j < 1000; j++) {
@@ -97,6 +107,7 @@ public class CompareAndSwapDemo {
 	 */
 	static class IncreamCas implements Runnable {
 
+		@Override
 		public void run() {
 			for (int j = 0; j < 1000; j++) {
 				for (;;) {
@@ -112,12 +123,34 @@ public class CompareAndSwapDemo {
 		}
 	}
 
+	/**
+	 * 用原子类实现的线程安全的阶乘
+	 *
+	 */
 	static class IncreamAtomic implements Runnable {
+		@Override
 		public void run() {
 			for (int j = 0; j < 1000; j++) {
 				factorialAtomic.incrementAndGet();
 			}
 			recordMax("atomic", factorialAtomic.get());
+			latch.countDown();
+		}
+	}
+
+	/**
+	 * 用实现了CAS算法的ReentrantLock实现的线程安全的阶乘
+	 *
+	 */
+	static class IncreamReentrantLock implements Runnable {
+		@Override
+		public void run() {
+			for (int j = 0; j < 1000; j++) {
+				reentrantLock.lock();
+				factorialReentrantLock++;
+				reentrantLock.unlock();
+			}
+			recordMax("reentrant", factorialReentrantLock);
 			latch.countDown();
 		}
 	}

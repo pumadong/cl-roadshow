@@ -28,6 +28,7 @@
 	<!-- true:代表使用cglib进行动态代理 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	
+	<!-- 开启自动注解注入，排除@Controller标注的类 -->
 	<context:component-scan base-package="com.cl.roadshow">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>

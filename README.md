@@ -6,7 +6,7 @@ cl-roadshow：通过代码总结具备路演的能力
 
 一、raodshow-app
 
-Java APP方面的代码演示，包含：
+Java APP 方面的代码演示，包含：
 
 算法：哈希、红黑树、排序算法
 
@@ -19,7 +19,7 @@ Spring：IoC、AOP
 
 二、roadshow-web
 
-Java WEB方面的代码演示，包含：
+Java WEB 方面的代码演示，包含：
 
 Spring：MVC
 

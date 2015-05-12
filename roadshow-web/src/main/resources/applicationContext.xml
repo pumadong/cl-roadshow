@@ -45,7 +45,7 @@
                 <value>file:/etc/conf/cl/roadshow-web/*.properties</value>
 			</list>
 		</property>
-	</bean>	
+	</bean>
 	
 	<!-- Freemarker配置，参考： http://www.cnblogs.com/hoojo/archive/2011/04/19/2020551.html-->
 	<bean id="freemarkerConfig"
@@ -84,8 +84,38 @@
 		<property name="cache" value="true" />
 		<property name="prefix" value="" />
 		<property name="suffix" value="" />
-	</bean>
+	</bean>	
 	
 	<!-- 通过BeanFactoryAware，手动从spring容器获取bean -->
     <bean class="com.cl.roadshow.utils.SpringContextHolder"  lazy-init="false" />
+	
+	<!-- 开启注解事务支持 -->	
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		 <property name="dataSource" ref="dataSourceRoadshow"/>
+	</bean>
+	
+	<!-- 会自动将basePackage中配置的包路径下的所有接口生成代理类，实现数据访问 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactory" ref="sqlSessionFactoryRoadshow" />
+		<property name="basePackage" value="com/cl/roadshow/mapper" />
+	</bean>
+	
+	<!-- Database连接 -->	
+	<bean id="sqlSessionFactoryRoadshow" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceRoadshow" />
+	</bean>	
+	<beans profile="production">
+		<bean id="dataSourceRoadshow" class="org.springframework.jndi.JndiObjectFactoryBean">
+			<property name="jndiName" value="java:/MySqlDS_JDBC" />
+		</bean>
+	</beans>
+    <beans profile="dev">
+	    <bean id="dataSourceRoadshow" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		    <property name="url" value="jdbc:mysql://192.168.80.128:3306/roadshow?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true"/>
+		    <property name="username" value="root"/>
+		    <property name="password" value="123456"/>
+	    </bean>
+    </beans>    
 </beans>

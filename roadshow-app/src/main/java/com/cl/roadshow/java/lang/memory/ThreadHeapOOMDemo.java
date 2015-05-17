@@ -12,7 +12,8 @@ public class ThreadHeapOOMDemo {
 	public static void main(String[] args) {
 		ThreadHeapOOMDemo demo = new ThreadHeapOOMDemo();
 
-		(new Thread(demo.new ThreadHeapOOM())).start();
+		Thread t = new Thread(demo.new ThreadHeapOOM());
+		t.start();
 	}
 
 	class ThreadHeapOOM implements Runnable {

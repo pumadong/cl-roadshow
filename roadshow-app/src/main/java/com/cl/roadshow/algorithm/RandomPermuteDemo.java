@@ -1,7 +1,5 @@
 package com.cl.roadshow.algorithm;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -12,33 +10,31 @@ import java.util.Random;
  * 这个帖子分析了数组和链表的性能差异
  *
  */
-public class RandomPermuteDemo {
+public class RandomPermuteDemo<T> {
 	public static void main(String[] args) {
 
-		List<Person> personList = new ArrayList<Person>();
-		personList.add(new Person(1, "张三"));
-		personList.add(new Person(2, "李四"));
-		personList.add(new Person(3, "王五"));
-		personList.add(new Person(4, "赵六"));
+		RandomPermuteDemo<Person> demo = new RandomPermuteDemo<Person>();
 
-		createSequence(personList);
+		Person[] persons = new Person[] { new Person(1, "张三"), new Person(2, "李四"), new Person(3, "王五"),
+				new Person(4, "赵六") };
+		demo.createSequence(persons);
 
+		// 关于泛型，不能在静态方法中使用，否则会报异常：
+		// Cannot make a static reference to the non-static type T
+		// 参考帖子：http://my.oschina.net/sulliy/blog/134442
 	}
 
-	public static void createSequence(List<Person> personList) {
-		Person[] persons = new Person[personList.size()];
-		personList.toArray(persons);
-		int count = persons.length;
+	public void createSequence(T[] ts) {
+		int count = ts.length;
 		for (int i = 0; i < count; i++) {
 			int index0 = new Random().nextInt(count - i);
 			int index1 = count - i - 1;
-			Person tmp = persons[index0];
-			persons[index0] = persons[index1];
-			persons[index1] = tmp;
+			T tmp = ts[index0];
+			ts[index0] = ts[index1];
+			ts[index1] = tmp;
 			System.out.println(tmp);
 		}
 	}
-
 }
 
 class Person {

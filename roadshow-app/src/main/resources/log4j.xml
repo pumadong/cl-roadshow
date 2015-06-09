@@ -26,10 +26,13 @@
 	<logger name="net">
 		<level value="ERROR" />
 	</logger>
+	<!-- 所有com.cl包的Logger会被这个节点捕获，并切仅处理匹配的日志级别 -->
+	<!-- additivity为true，代表处理成功后继续抛出；为false代表不再往外抛出 -->
 	<category name="com.cl" additivity="false">
 		<priority value="INFO" />
 		<appender-ref ref="dailyRolling" />
 	</category>
+	<!-- 没有被处理的Logger进入这个节点 -->
 	<root>
 		<level value="ERROR" />
 		<appender-ref ref="console" />

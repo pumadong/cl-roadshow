@@ -20,6 +20,8 @@ Spring：IoC、AOP
 
 XML/JSON：fastjson、XStream
 
+Log4j：常用的xml配置、输出栈桢的用户
+
 
 二、roadshow-web
 

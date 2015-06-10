@@ -26,7 +26,7 @@
 	<logger name="net">
 		<level value="ERROR" />
 	</logger>
-	<!-- 所有com.cl包的Logger会被这个节点捕获，并切仅处理匹配的日志级别 -->
+	<!-- 所有com.cl包的Logger会被这个节点捕获，priority不匹配的，会被这个节点吃掉；priority匹配的，处理完毕后根据additivity决定怎么继续 -->
 	<!-- additivity为true，代表处理成功后继续抛出；为false代表不再往外抛出 -->
 	<category name="com.cl" additivity="false">
 		<priority value="INFO" />

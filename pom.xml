@@ -26,6 +26,9 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- logging -->
+		<!-- 这里使用的日志是log4j:http://www.slf4j.org/manual.html -->
+		<!-- 关于slf4j接口，经常会因为多个实现出现警告，SLF4J: Class path contains multiple SLF4J bindings. -->
+		<!-- 要解决好依赖关系，参考：http://www.slf4j.org/codes.html#multiple_bindings -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -52,6 +55,13 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>${spring.version}</version>
+            <exclusions>
+                <!-- Exclude Commons Logging in favor of SLF4j -->
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>

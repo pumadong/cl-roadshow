@@ -20,7 +20,9 @@ Spring：IoC、AOP
 
 XML/JSON：fastjson、XStream
 
-Log4j：常用的xml配置、输出栈桢的用户
+Log4j：常用的xml配置、输出栈桢的用法
+
+Commons BeanUtils：http://commons.apache.org/proper/commons-beanutils/
 
 
 二、roadshow-web

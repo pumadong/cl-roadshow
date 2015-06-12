@@ -167,6 +167,13 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.4</version>
         </dependency>
+        <!-- https://maven-repository.com/artifact/org.restlet.jse/org.restlet.ext.json/2.3.2 -->
+        <!-- http://restlet.com/technical-resources/restlet-framework/tutorials/2.3 -->
+		<dependency>
+		  <groupId>org.restlet.jse</groupId>
+		  <artifactId>org.restlet.ext.json</artifactId>
+		  <version>2.3.2</version>
+		</dependency>
 	</dependencies>  
 
 	<!-- http://blog.csdn.net/hong0220/article/details/41597769 -->

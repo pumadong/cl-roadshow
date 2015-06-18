@@ -27,7 +27,7 @@ public class TimeStampAndDateDemo {
      * 时间戳转换成到秒日期格式字符串
      * 
      * @param milliSeconds
-     *            精确到秒的字符串
+     *            精确到毫秒的字符串
      * @param formatStr
      * @return
      */

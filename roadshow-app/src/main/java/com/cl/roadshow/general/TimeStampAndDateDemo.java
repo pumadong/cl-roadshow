@@ -1,7 +1,6 @@
 package com.cl.roadshow.general;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -9,7 +8,6 @@ import java.util.Date;
  * 
  */
 public class TimeStampAndDateDemo {
-
     public static void main(String[] args) {
         
         //在线互转地址：http://tool.chinaz.com/Tools/unixtime.aspx

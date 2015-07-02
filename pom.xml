@@ -185,6 +185,19 @@
 		    <artifactId>httpclient</artifactId>
 		    <version>4.3.3</version>
 		</dependency>
+		<!-- 基于牛逼的apache commons-pool实现Thrift连接池 -->
+		<!-- http://commons.apache.org/proper/commons-pool/download_pool.cgi -->
+		<!-- 这里都要依赖一个Thrift自动生成的类库的jar包，这里模拟一个类：TTestService来演示 -->
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>1.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.thrift</groupId>
+			<artifactId>libthrift</artifactId>
+			<version>0.9.0</version>
+		</dependency>
 	</dependencies>  
 
 	<!-- http://blog.csdn.net/hong0220/article/details/41597769 -->

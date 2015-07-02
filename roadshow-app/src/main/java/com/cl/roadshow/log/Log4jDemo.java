@@ -1,8 +1,3 @@
-/*
- * Copyright (c) 2010-2015 meituan.com
- * All rights reserved.
- * 
- */
 package com.cl.roadshow.log;
 
 import org.slf4j.Logger;

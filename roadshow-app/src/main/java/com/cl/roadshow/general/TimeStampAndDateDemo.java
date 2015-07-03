@@ -15,9 +15,10 @@ public class TimeStampAndDateDemo {
         
         System.out.println("基准时间：");
         
-        Long timeStampSource = timeStamp("1970-01-01 08:00:00","yyyy-MM-dd HH:mm:ss");
+        Long timeStampSource = date2TimeStamp("1970-01-01 08:00:00","yyyy-MM-dd HH:mm:ss");
         System.out.println("timeStampFrom=" + timeStampSource);
 
+        // String date = timeStamp2Date(timeStampSource);
         String date = timeStamp2Date(timeStampSource, "yyyy-MM-dd HH:mm:ss");
         System.out.println("date=" + date);
         
@@ -29,7 +30,7 @@ public class TimeStampAndDateDemo {
         
         System.out.println("\n当前时间：");
         
-        timeStampSource = timeStamp("","yyyy-MM-dd HH:mm:ss.FFF");
+        timeStampSource = date2TimeStamp("","yyyy-MM-dd HH:mm:ss.FFF");
         System.out.println("timeStampFrom=" + timeStampSource);
 
         date = timeStamp2Date(timeStampSource, "yyyy-MM-dd HH:mm:ss");
@@ -48,14 +49,12 @@ public class TimeStampAndDateDemo {
      * 
      * @param milliSeconds
      *            精确到毫秒的字符串
-     * @param formatStr
+     * @param format
+     *            默认：yyyy-MM-dd HH:mm:ss
      * @return
      */
-    public static String timeStamp2Date(long milliSeconds, String format) {
-        if (format == null || format.isEmpty()) {
-            format = "yyyy-MM-dd HH:mm:ss";
-        }
-        SimpleDateFormat sdf = new SimpleDateFormat(format);
+    public static String timeStamp2Date(long milliSeconds, String... format) {
+        SimpleDateFormat sdf = new SimpleDateFormat(format.length == 1 ? format[0] : "yyyy-MM-dd HH:mm:ss");
         return sdf.format(new Date(milliSeconds));
     }
 
@@ -65,34 +64,15 @@ public class TimeStampAndDateDemo {
      * @param date
      *            字符串日期
      * @param format
-     *            如：yyyy-MM-dd HH:mm:ss
+     *            默认：yyyy-MM-dd HH:mm:ss
      * @return
      */
-    public static Long date2TimeStamp(String dateStr, String format) {
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat(format);
-            Date d = sdf.parse(dateStr);
-            return d.getTime();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0L;
-    }
-
-    /**
-     * 取得当前时间戳（精确到毫秒）
-     * 
-     * @return
-     */
-    public static Long timeStamp(String dateStr, String format) {
+    public static Long date2TimeStamp(String dateStr, String... format) {
         if(dateStr == null || dateStr.equals("")) {
             return System.currentTimeMillis();
         }
-        if (format == null || format.isEmpty()) {
-            format = "yyyy-MM-dd HH:mm:ss";
-        }
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat(format);
+            SimpleDateFormat sdf = new SimpleDateFormat(format.length == 1 ? format[0] : "yyyy-MM-dd HH:mm:ss");
             Date d = sdf.parse(dateStr);
             return d.getTime();
         } catch (Exception e) {

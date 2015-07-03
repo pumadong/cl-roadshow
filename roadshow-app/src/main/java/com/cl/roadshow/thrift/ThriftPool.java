@@ -7,7 +7,7 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 
 /**
- * Thrift线程池
+ * Thrift连接池
  * 
  */
 public class ThriftPool extends BasePool<TTransport>{

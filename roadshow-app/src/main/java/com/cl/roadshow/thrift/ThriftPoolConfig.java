@@ -3,7 +3,7 @@ package com.cl.roadshow.thrift;
 import org.apache.commons.pool.impl.GenericObjectPool.Config;
 
 /**
- * 设置Thrift线程池的常用配置
+ * 设置Thrift连接池的常用配置
  * 
  */
 public class ThriftPoolConfig extends Config {

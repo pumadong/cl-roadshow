@@ -4,7 +4,7 @@ import org.apache.commons.pool.PoolableObjectFactory;
 import org.apache.commons.pool.impl.GenericObjectPool;
 
 /**
- * 线程池泛型基础类
+ * 连接池泛型基础类
  * 
  */
 public abstract class BasePool<T> {

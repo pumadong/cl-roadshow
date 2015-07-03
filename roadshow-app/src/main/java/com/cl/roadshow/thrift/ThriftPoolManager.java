@@ -4,7 +4,9 @@ import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.transport.TTransport;
 
 /**
- * 线程池使用管理器
+ * Thrift连接池使用管理器，这个包演示的是一个Thrift连接池的实现（基于commons-pool)
+ * 
+ * 另附上一个相关的帖子，关于数据库连接池的：http://www.cnblogs.com/tony-law/archive/2012/08/27/2658628.html
  * 
  */
 public class ThriftPoolManager {
@@ -19,9 +21,11 @@ public class ThriftPoolManager {
         
         ThriftPoolConfig config = new ThriftPoolConfig();
 
-        //如果机器连不上，这里就报出异常，如下：
-        //org.apache.thrift.transport.TTransportException: java.net.ConnectException: Connection refused
-        //所以这里需要一台能连接的上的服务器
+        // 如果机器存在，但是端口不提供服务，则很快返回，报如下错误：
+        // org.apache.thrift.transport.TTransportException: java.net.ConnectException: Connection refused
+        // 如果机器不存在，则很长时间返回，报如下错误：
+        // org.apache.thrift.transport.TTransportException: java.net.SocketTimeoutException: connect timed out
+        // 所以这里需要一台能连接的上的服务器
         pool = new ThriftPool(config,"192.168.1.100",8410,30000);
     }
     

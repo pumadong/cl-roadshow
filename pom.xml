@@ -124,12 +124,18 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- Json-Lib -->
+        <!-- alibaba json -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.1.43</version>
         </dependency>
+        <!-- google json -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
+		</dependency>
          <!--hessian 用于跨语言支持-->
         <dependency>
             <groupId>com.caucho</groupId>

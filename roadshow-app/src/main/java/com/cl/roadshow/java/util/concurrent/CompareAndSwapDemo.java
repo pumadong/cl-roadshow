@@ -14,6 +14,7 @@ import sun.misc.Unsafe;
  * 演示Java并发的几种实现方法，演示CAS算法的原理
  *
  */
+@SuppressWarnings("restriction")
 public class CompareAndSwapDemo {
 
 	private static int factorialUnSafe;

@@ -24,7 +24,9 @@ Log4j：常用的xml配置、输出栈桢的用法
 
 Commons BeanUtils：http://commons.apache.org/proper/commons-beanutils/
 
-General：比较器、org.json.JSONObject、时间戳
+General：比较器、org.json.JSONObject、Google Gson、Alibaba Fastjson、时间戳
+
+Thrift连接池，基于Apache commons-pool 实现
 
 
 二、roadshow-web

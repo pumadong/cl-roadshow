@@ -1,4 +1,4 @@
-package com.cl.roadshow.java.json;
+package com.cl.roadshow.json;
 
 import java.util.ArrayList;
 import java.util.HashMap;

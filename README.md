@@ -28,6 +28,8 @@ General：比较器、org.json.JSONObject、Google Gson、Alibaba Fastjson、时
 
 Thrift连接池，基于Apache commons-pool 实现
 
+通讯：Socket
+
 
 二、roadshow-web
 

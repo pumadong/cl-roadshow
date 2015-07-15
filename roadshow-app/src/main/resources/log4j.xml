@@ -34,7 +34,7 @@
 	</category>
 	<!-- 没有被处理的Logger进入这个节点 -->
 	<root>
-		<level value="ERROR" />
+		<level value="INFO" />
 		<appender-ref ref="console" />
 		<appender-ref ref="dailyRolling" />
 	</root>

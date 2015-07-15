@@ -25,8 +25,8 @@ public class Log4jDemo {
 
         System.out.println("--------------------------------------");
 
-        // 这行日志不会打印出来，因为默认的root只会出来ERROR级别的日志
-        consoleLogger.info("This info message is only printed in console!");
+        // 这行日志不会打印出来，因为默认的root只会出来INFO及以上级别的日志
+        consoleLogger.debug("This info message is only printed in console!");
 
         consoleLogger.error("This error message is only printed in console!");
     }

@@ -30,6 +30,8 @@ Thrift连接池，基于Apache commons-pool 实现
 
 通讯：Socket
 
+正则表达式：Pattern、Matcher
+
 
 二、roadshow-web
 

@@ -1,20 +1,19 @@
 package com.cl.roadshow.java.nio;
 
+import java.net.*;
+import java.nio.*;
+import java.nio.channels.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * nio 基本演示
+ * 
+ * 以下链接的文章可以看，但是直接从网站下代码的话有一些错误，得注意
  * 
  * http://www.ibm.com/developerworks/cn/education/java/j-nio/j-nio.html
  * http://www.ibm.com/developerworks/cn/java/j-nio2-1/
  */
-import java.io.*;
-import java.net.*;
-import java.nio.*;
-import java.nio.channels.*;
-import java.util.*;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class MultiPortEchoClient
 {
     private static final Logger log = LoggerFactory.getLogger("console");

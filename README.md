@@ -12,7 +12,7 @@ Java APP 方面的代码演示，包含：
 
 设计模式：创建模式、结构模式、行为模式
 
-JDK：内存、并发、线程
+JDK：内存、并发、线程、正则表达式、NIO、Socket
 
 Spring：IoC、AOP
 
@@ -27,10 +27,6 @@ Commons BeanUtils：http://commons.apache.org/proper/commons-beanutils/
 General：比较器、org.json.JSONObject、Google Gson、Alibaba Fastjson、时间戳
 
 Thrift连接池，基于Apache commons-pool 实现
-
-通讯：Socket
-
-正则表达式：Pattern、Matcher
 
 
 二、roadshow-web

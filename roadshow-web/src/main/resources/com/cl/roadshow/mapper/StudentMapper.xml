@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cl.roadshow.mapper.StudentMapper" >
+  <resultMap id="BaseResultMap" type="com.cl.roadshow.model.Student" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="create_person" property="createPerson" jdbcType="VARCHAR" />
+	<result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    s.id, s.name, s.teacher_id, s.score, s.create_person, s.create_date
+  </sql>
+  <sql id="where" >
+  	<trim prefix="WHERE" prefixOverrides="AND">
+  	<if test="name!=null and name!=''">
+  		and s.name like CONCAT(#{name},'%') 
+  	</if>
+  	</trim>
+  </sql>
+  <select id="getStudentByName" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from student s
+    where s.name = #{name,jdbcType=VARCHAR}
+  </select>
+  <select id="getStudentTotalBySearch" parameterType="com.cl.roadshow.model.StudentSearchModel" resultType="java.lang.Integer">
+  	select count(0) 
+  	from student s
+  	<include refid="where"/>
+  </select>
+  <!-- 这个方法虽然没有显示的书写limit，但是也是分页的，利用的MyBatis的RowBounds -->
+  <select id="getStudentListBySearch" parameterType="com.cl.roadshow.model.StudentSearchModel" resultMap="BaseResultMap">
+   select 
+   <include refid="Base_Column_List" />
+   from student s
+   <include refid="where"/>
+  </select>
+</mapper>

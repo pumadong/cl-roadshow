@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cl.roadshow.model.Person;
-import com.cl.roadshow.service.IUserService;
+import com.cl.roadshow.model.Student;
+import com.cl.roadshow.service.IStudentService;
 
 @Controller
 @RequestMapping("/controller")
 public class SpringMVCDemo {
 
 	@Autowired
-	private IUserService userService;
+	private IStudentService studentService;
 
 	@ResponseBody
 	@RequestMapping(value = "/getNameByParam", method = RequestMethod.GET)
@@ -32,7 +32,7 @@ public class SpringMVCDemo {
 
 	@ResponseBody
 	@RequestMapping("/getNameByModel")
-	public String getNameByModel(@ModelAttribute("person") Person person) {
+	public String getNameByModel(@ModelAttribute("person") Student person) {
 		return "SpringMVCDemo.getNameByModel:" + person.getName();
 	}
 
@@ -42,13 +42,13 @@ public class SpringMVCDemo {
 		return "SpringMVCDemo.getNameByRequest:" + request.getParameter("name");
 	}
 
-	@RequestMapping("/personView")
-	public String personView(ModelMap map) {
-		List<Person> persons = new ArrayList<Person>();
-		persons.add(new Person("张三"));
-		persons.add(new Person("李四"));
-		map.put("persons", persons);
-		return "person.ftl";
+	@RequestMapping("/studentView")
+	public String studentView(ModelMap map) {
+		List<Student> students = new ArrayList<Student>();
+		students.add(new Student("张三"));
+		students.add(new Student("李四"));
+		map.put("persons", students);
+		return "student.ftl";
 	}
 
 	@RequestMapping("/redirect")
@@ -57,12 +57,12 @@ public class SpringMVCDemo {
 	}
 
 	@ResponseBody
-	@RequestMapping("/getPersonByName")
-	public String getPersonByName(String name) {
-		Person person = userService.getPersonByName(name);
+	@RequestMapping("/getStudentByName")
+	public String getStudentByName(String name) {
+		Student student = studentService.getStudentByName(name);
 		String message;
-		if (person != null) {
-			message = person.getName() + ":" + person.getCreateTime();
+		if (student != null) {
+			message = student.getName() + ":" + student.getCreateDate();
 		} else {
 			message = "没有查询到数据";
 		}

@@ -1,33 +1,44 @@
-﻿/*
-Navicat MySQL Data Transfer
+﻿#BEGIN*************************表单列表***************************BEGIN
+#1. student
+#2. teacher
+#END***************************表单列表***************************END
 
-Source Server         : 192.168.80.128
-Source Server Version : 50624
-Source Host           : 192.168.80.128:3306
-Source Database       : roadshow
 
-Target Server Type    : MYSQL
-Target Server Version : 50624
-File Encoding         : 65001
+#学生表
+DROP TABLE IF EXISTS `student`;
+CREATE TABLE `student` (
+`id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键' ,
+`name`  varchar(50) NOT NULL DEFAULT '' COMMENT '姓名' ,
+`teacher_id`  int(11) NOT NULL DEFAULT 0 COMMENT '老师ID' ,
+`score`  int(11) NOT NULL DEFAULT 0 COMMENT '分数' ,
+`create_person`  varchar(30) NOT NULL DEFAULT '' COMMENT '记录生成人' ,
+`create_date`  datetime NOT NULL COMMENT '记录生成时间' ,
+INDEX `idx_student_name` (`name`) USING BTREE ,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='学生表'
+;
 
-Date: 2015-05-12 22:38:44
-*/
+INSERT INTO `student`(id,name,teacher_id,score,create_person,create_date) 
+VALUES
+(1,'张三','1',90,'system',NOW()),
+(2,'李四','2',95,'system',NOW()),
+(3,'王五','2',80,'system',NOW())
+;
 
-SET FOREIGN_KEY_CHECKS=0;
+#老师表
+DROP TABLE IF EXISTS `teacher`;
+CREATE TABLE `teacher` (
+`id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键' ,
+`name`  varchar(50) NOT NULL DEFAULT '' COMMENT '姓名' ,
+`create_person`  varchar(30) NOT NULL DEFAULT '' COMMENT '记录生成人' ,
+`create_date`  datetime NOT NULL COMMENT '记录生成时间' ,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='老师表'
+;
 
--- ----------------------------
--- Table structure for `person`
--- ----------------------------
-DROP TABLE IF EXISTS `person`;
-CREATE TABLE `person` (
-  `name` varchar(50) NOT NULL DEFAULT '',
-  `create_time` datetime NOT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of person
--- ----------------------------
-INSERT INTO `person` VALUES ('张三', '2015-05-11 01:22:33');
-INSERT INTO `person` VALUES ('李四', '2015-05-12 02:32:33');
-INSERT INTO `person` VALUES ('王五', '2015-05-13 01:22:33');
+INSERT INTO `teacher`(id,name,create_person,create_date) 
+VALUES
+(1,'张老师','system',NOW()),
+(2,'王老师','system',NOW()),
+(3,'李老师','system',NOW())
+;

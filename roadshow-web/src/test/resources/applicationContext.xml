@@ -108,7 +108,7 @@
 	
     <bean id="dataSourceRoadshow" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-	    <property name="url" value="jdbc:mysql://192.168.80.128:3306/roadshow?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true"/>
+	    <property name="url" value="jdbc:mysql://127.0.0.1:3306/roadshow?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true"/>
 	    <property name="username" value="root"/>
 	    <property name="password" value="123456"/>
     </bean>

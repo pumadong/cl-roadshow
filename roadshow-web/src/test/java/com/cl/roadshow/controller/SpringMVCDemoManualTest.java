@@ -23,8 +23,8 @@ public class SpringMVCDemoManualTest {
 	}
 
 	@Test
-	public void getPersonByName() {
+	public void getStudentByName() {
 		String name = "张三";
-		System.out.println(springMVCDemo.getPersonByName(name));
+		System.out.println(springMVCDemo.getStudentByName(name));
 	}
 }

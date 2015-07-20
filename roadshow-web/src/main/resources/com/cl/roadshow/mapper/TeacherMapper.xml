@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cl.roadshow.mapper.TeacherMapper" >
+  <resultMap id="StudentMap" type="com.cl.roadshow.model.Student" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="create_person" property="createPerson" jdbcType="VARCHAR" />
+	<result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="TeacherMap" type="com.cl.roadshow.model.Teacher" >
+    <id column="t_id" property="id" jdbcType="INTEGER" />
+    <result column="t_name" property="name" jdbcType="VARCHAR" />
+    <result column="t_create_person" property="createPerson" jdbcType="VARCHAR" />
+	<result column="t_create_date" property="createDate" jdbcType="TIMESTAMP" />
+	<collection property="students" javaType="java.util.Set" resultMap="StudentMap"/>
+  </resultMap>  
+  <select id="getTeacherByName" resultMap="TeacherMap" parameterType="java.lang.Integer" >
+    select 
+    t.id t_id, t.name t_name, t.create_person t_create_person, t.create_date t_create_date,
+    s.id, s.name, s.teacher_id, s.score, s.create_person, s.create_date
+    from teacher t 
+    left join student s on t.id=s.teacher_id
+    where t.name = #{name,jdbcType=VARCHAR}
+  </select>
+</mapper>

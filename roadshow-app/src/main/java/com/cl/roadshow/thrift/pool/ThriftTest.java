@@ -1,4 +1,4 @@
-package com.cl.roadshow.thrift;
+package com.cl.roadshow.thrift.pool;
 
 import org.apache.thrift.transport.TTransport;
 

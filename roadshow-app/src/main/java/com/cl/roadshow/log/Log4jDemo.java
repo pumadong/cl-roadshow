@@ -11,10 +11,8 @@ import com.alibaba.fastjson.JSON;
  */
 public class Log4jDemo {
 
-    private static final Logger logger = LoggerFactory
-            .getLogger(Log4jDemo.class);
-    private static final Logger consoleLogger = LoggerFactory
-            .getLogger("console");
+    private static final Logger logger = LoggerFactory.getLogger(Log4jDemo.class);
+    private static final Logger consoleLogger = LoggerFactory.getLogger("console");
 
     public static void main(String[] args) {
         logger.error("StackTrade Title", new Exception("Hello,Stack"));

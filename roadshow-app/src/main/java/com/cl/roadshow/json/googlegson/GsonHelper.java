@@ -20,9 +20,9 @@ public class GsonHelper {
     
     private static final Gson gson = new GsonBuilder().serializeNulls()
             .addSerializationExclusionStrategy(new DefaultExclusionStrategy())
-            .setPrettyPrinting()
+            //.setPrettyPrinting()  会格式化，但是会变成多行，不利于统计问题
             .create();
-
+    
     public static void main(String[] args) {
         
         Student student = new Student();

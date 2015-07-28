@@ -20,7 +20,7 @@ public class GsonHelper {
     
     private static final Gson gson = new GsonBuilder().serializeNulls()
             .addSerializationExclusionStrategy(new DefaultExclusionStrategy())
-            //.setPrettyPrinting()  会格式化，但是会变成多行，不利于统计问题
+            .setPrettyPrinting()  //会格式化，但是会变成多行，统计的时候也是可以的，比如：grep -n(N) text file | more
             .create();
     
     public static void main(String[] args) {

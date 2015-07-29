@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.cl.roadshow.model.Student;
 import com.cl.roadshow.service.IStudentService;
@@ -68,4 +70,12 @@ public class SpringMVCDemo {
 		}
 		return "SpringMVCDemo.getPersonByName:" + message;
 	}
+	
+   @ResponseBody
+    @RequestMapping(value = "/getRequest", method = RequestMethod.GET)
+    public String getRequest() {
+       HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+       
+       return "request.getName()：" + request.getParameter("name");
+    }
 }

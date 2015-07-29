@@ -45,6 +45,14 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	<!-- SpringMvc中随时获得HttpServletRequest对象 -->
+	<!-- http://blog.csdn.net/nacey5201/article/details/8547772 -->
+	<!-- http://blog.csdn.net/mydwr/article/details/8051086  http://itindex.net/detail/50450-java-web-%E5%88%A9%E7%94%A8 -->
+	<listener>  
+        <listener-class>  
+            org.springframework.web.context.request.RequestContextListener  
+        </listener-class>  
+    </listener> 
 	
 	<!-- Spring MVC -->
 	<servlet>

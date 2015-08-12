@@ -46,6 +46,8 @@ import org.apache.commons.codec.binary.Base64;
  * 
  * 如果有兴趣深入AES算法，有一些参考文档：http://download.csdn.net/detail/lonerloner/8475309
  * 
+ * Java的AES加解密算法，如果使用256，貌似必须对JDK做改动：http://mmz06.blog.163.com/blog/static/121416962014111785855811/
+ * 
  * 
     the following modes:
     CBC (the default)

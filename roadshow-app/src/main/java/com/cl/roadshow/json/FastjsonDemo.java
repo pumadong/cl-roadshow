@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 
 /**
@@ -18,6 +19,8 @@ import com.alibaba.fastjson.TypeReference;
 public class FastjsonDemo {
 	public static void main(String[] args) {
 
+	    String s = "dd";
+	    System.out.println(JSON.toJSONString(s));
 		// 将JSON和JavaBean对象互相转换
 		Person person = new Person(1, "张三", null);
 		String jsonString = JSON.toJSONString(person);
@@ -68,6 +71,22 @@ public class FastjsonDemo {
 		List<Map<String, Object>> list4 = JSON.parseObject(jsonString, new TypeReference<List<Map<String, Object>>>() {
 		});
 		System.out.println("list4：" + list4.toString());
+		System.out.println("--------------------------------------");
+		
+		
+		Map<String,Object> mm = new HashMap<String, Object>();
+		mm.put("key1", "value1");
+		Person personMM = new Person(1, "personMM", 11);
+		List<Person> personMMs = new ArrayList<Person>();
+		personMMs.add(personMM);
+		mm.put("personMMs", personMMs);
+		mm.put("person",personMM);
+		String jsonMM = JSON.toJSONString(mm);
+		System.out.println(jsonMM);
+		JSONObject o = JSON.parseObject(jsonMM);
+		for (Map.Entry<String, Object> field : o.entrySet()) {
+		    System.out.println(field.getValue().getClass().getSimpleName());
+		}
 	}
 }
 

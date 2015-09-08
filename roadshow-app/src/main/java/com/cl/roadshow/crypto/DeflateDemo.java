@@ -1,6 +1,7 @@
-package com.cl.roadshow.algorithm;
+package com.cl.roadshow.crypto;
 
 import java.io.ByteArrayOutputStream;
+import java.util.zip.Deflater;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterOutputStream;
 
@@ -14,6 +15,8 @@ import org.slf4j.LoggerFactory;
  * https://en.wikipedia.org/wiki/DEFLATE
  * 
  * https://en.wikipedia.org/wiki/Zlib
+ * 
+ * 对应的JavaScript实现：https://github.com/nodeca/pako
  *
  */
 public class DeflateDemo {
@@ -21,16 +24,26 @@ public class DeflateDemo {
     private static final Logger log = LoggerFactory.getLogger("console");
     
     public static void main(String[] args) throws Exception {
+        // 演示hello 编码后的字节码数组
+        String data = "hello";
+        ByteArrayOutputStream bos = new ByteArrayOutputStream(); 
+        DeflaterOutputStream zos = new DeflaterOutputStream(bos,new Deflater(-1,false)); 
+        zos.write(data.getBytes("utf-8")); 
+        zos.close();
         
-        String source = "hello 中国,hello 中国";
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<bos.toByteArray().length;i++) {
+            sb.append(bos.toByteArray()[i] + "|");
+        }
+        log.info(sb.toString());
         
+        // 演示压缩解压
+        String source = "hello";
         String compressStr = compress(source);
-        
         log.info(compressStr);
-        
         String deCompressStr = deCompress(compressStr);
-        
         log.info(deCompressStr);
+
     }
     
     /**

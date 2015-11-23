@@ -1,4 +1,4 @@
-package com.cl.roadshow.java.util.pool.fifo;
+package com.cl.roadshow.java.jtp.fifo;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

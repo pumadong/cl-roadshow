@@ -1,4 +1,4 @@
-package com.cl.roadshow.java.util.pool.fifo;
+package com.cl.roadshow.java.jtp.fifo;
 
 /**
  * 演示线程安全的FIFO，代码示例来源于：《Java Thread Programming》 第 18 章

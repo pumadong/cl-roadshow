@@ -1,6 +1,6 @@
-package com.cl.roadshow.java.util.pool.threadpool;
+package com.cl.roadshow.java.jtp.threadpool;
 
-import com.cl.roadshow.java.util.pool.fifo.ObjectFIFO;
+import com.cl.roadshow.java.jtp.fifo.ObjectFIFO;
 
 /**
  * 演示线程池的实现，代码示例来源于：《Java Thread Programming》第13章

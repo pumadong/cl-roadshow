@@ -1,4 +1,4 @@
-package com.cl.roadshow.java.util.pool.threadpool;
+package com.cl.roadshow.java.jtp.threadpool;
 
 /**
  * 演示线程池的实现，代码示例来源于：《Java Thread Programming》第13章

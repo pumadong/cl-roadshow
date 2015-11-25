@@ -11,6 +11,7 @@ import java.net.Socket;
  * 
  */
 public class CalcClient extends Object {
+    @SuppressWarnings("resource")
     public static void main(String[] args) {
 
         String hostname = "localhost";

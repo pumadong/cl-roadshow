@@ -8,6 +8,7 @@ import java.io.InterruptedIOException;
  * 演示"Demonstration of interrupt() and stop() Being ignored"，代码示例来源于：《Java Thread Programming》 第 15 章
  * 
  */
+@SuppressWarnings("deprecation")
 public class DefiantStream extends Object {
     public static void main(String[] args) {
         final InputStream in = System.in;

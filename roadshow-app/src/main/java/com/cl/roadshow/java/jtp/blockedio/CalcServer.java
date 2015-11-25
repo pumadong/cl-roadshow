@@ -12,6 +12,7 @@ import java.util.List;
  * 演示"Closing a Stream to Break Out of the Blocked State"，代码示例来源于：《Java Thread Programming》 第 15 章
  * 
  */
+@SuppressWarnings(value={"rawtypes","unchecked"})
 public class CalcServer extends Object {
 
     private ServerSocket ss;

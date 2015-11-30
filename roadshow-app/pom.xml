@@ -18,5 +18,11 @@
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>tomcat</groupId>
+			<artifactId>catalina</artifactId>
+			<version>4.1.9</version>
+		</dependency>
+		
 	</dependencies>
 </project>

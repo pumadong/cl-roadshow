@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 斐波那契数列3种解法
+ * 斐波那契数列2种解法：数组和循环
+ * 
+ * 其实还有一种，根据数学公式的计算方法，可以把时间复杂度降低到 Q(Logn)
  *
  */
 public class FibonacciDemo {
@@ -22,7 +24,7 @@ public class FibonacciDemo {
     }
     
     /**
-     * 3个变量的方式
+     * 3个变量的方式：时间复杂度 Q(n)
      */
     public static void SolvingBy3Variables() {
         
@@ -42,7 +44,7 @@ public class FibonacciDemo {
     }
     
     /**
-     * 数组的方式
+     * 数组的方式：时间复杂度 Q(n)
      */
     public static void SolvingByArray() {
         int[] arr = new int[items];
@@ -57,7 +59,9 @@ public class FibonacciDemo {
     }
     
     /**
-     * 递归的方式
+     * 递归的方式：时间复杂度 n的指数
+     * 优点：代码简洁
+     * 缺点：1、重复计算导致性能降低；2、栈溢出
      * @param n
      * @return
      */

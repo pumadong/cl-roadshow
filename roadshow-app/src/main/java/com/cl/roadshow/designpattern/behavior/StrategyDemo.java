@@ -16,6 +16,8 @@ import java.util.Arrays;
  快速排序，递归，二叉分区
 
  稳定排序，是指对于相同大小的元素，在排序过程中相对位置不会发生变化；不稳定排序是指会发生变化。
+ 
+ JDK 7开始，Arrays.sort，根据不同的场景选择不同的排序算法，有归并、快排、插入：http://www.tuicool.com/articles/BfY7Nz
  */
 public class StrategyDemo {
 	private Strategy s;
@@ -158,7 +160,7 @@ public class StrategyDemo {
 
 	/**
 	 * 快速排序（不稳定排序）：时间复杂度，O(nlogn)，最坏情况为O(n^2)，是对冒泡排序的改进，适用于排序大列表
-	 * 基本思想：通过一次排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另一部分的小，然后对这两部分继续快速排序，达到整个数据变成有序序列
+	 * 基本思想：通过一次比较将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另一部分的小，然后对这两部分继续快速排序，达到整个数据变成有序序列
 	 *
 	 */
 	class QuickSort extends Strategy {
@@ -202,6 +204,10 @@ public class StrategyDemo {
 		}
 	}
 
+	/**
+	 * 归并排序是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用
+	 * 时间复杂度 Q(n log(n))，最差情况：在已经反向排好序的输入时(n^2)，JDK中使用优化过的归并TimSort解决这一问题
+	 */
 	class MergeSort extends Strategy {
 		public MergeSort(int[] a) {
 			super(a);

@@ -68,7 +68,7 @@ public class CompareAndSwapDemo {
 	}
 
 	/**
-	 * 非线程安全的阶乘
+	 * 非线程安全的
 	 *
 	 */
 	static class IncreamUnSafe implements Runnable {
@@ -84,7 +84,7 @@ public class CompareAndSwapDemo {
 	}
 
 	/**
-	 * 线程安全的阶乘
+	 * 线程安全的
 	 *
 	 */
 	static class IncreamSafe implements Runnable {
@@ -102,7 +102,7 @@ public class CompareAndSwapDemo {
 	}
 
 	/**
-	 * 用CAS算法实现的线程安全的阶乘，Java的原子类就是这么搞的，死循环，就是疯狂的压榨CPU
+	 * 用CAS算法实现的线程安全的，Java的原子类就是这么搞的，死循环，就是疯狂的压榨CPU
 	 *
 	 */
 	static class IncreamCas implements Runnable {
@@ -124,7 +124,7 @@ public class CompareAndSwapDemo {
 	}
 
 	/**
-	 * 用原子类实现的线程安全的阶乘
+	 * 用原子类实现的线程安全的
 	 *
 	 */
 	static class IncreamAtomic implements Runnable {
@@ -139,7 +139,7 @@ public class CompareAndSwapDemo {
 	}
 
 	/**
-	 * 用实现了CAS算法的ReentrantLock实现的线程安全的阶乘
+	 * 用实现了CAS算法的ReentrantLock实现的线程安全的
 	 *
 	 */
 	static class IncreamReentrantLock implements Runnable {

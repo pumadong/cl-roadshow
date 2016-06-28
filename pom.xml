@@ -10,6 +10,7 @@
 	<modules>
 		<module>roadshow-app</module>
 		<module>roadshow-web</module>
+		<module>roadshow-sonar</module>
 	</modules>  
 
 	<properties>

@@ -1,7 +1,7 @@
 cl-roadshow
 ==================
 
-cl-roadshow：通过代码总结具备路演的能力
+cl-roadshow：个人的代码仓库，通过不断的代码实践提供编码技能。
 
 
 一、raodshow-app

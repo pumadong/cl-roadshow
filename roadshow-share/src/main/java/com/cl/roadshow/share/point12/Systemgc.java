@@ -1,4 +1,4 @@
-package com.cl.roadshow.share.one;
+package com.cl.roadshow.share.point12;
 
 /**
  * System.gc()会立刻产生GC吗？

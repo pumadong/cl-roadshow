@@ -1,4 +1,4 @@
-package com.cl.roadshow.share.one;
+package com.cl.roadshow.share.point12;
 
 /**
  * 堆内存中，Student的实例占用多少字节

@@ -15,9 +15,15 @@ public class ListNode {
 		next = null;
 	}
 	
+	boolean hasCycle = false;
+	
 	@Override
 	public String toString() {
-		return "ListNode [val=" + val + ", next=" + next + "]";
+		if(hasCycle) {
+			return "ListNode [val=" + val + "]";
+		} else {
+			return "ListNode [val=" + val + ", next=" + next + "]";
+		}
 	}
 
 	static class Intersection {
@@ -58,6 +64,24 @@ public class ListNode {
 		
 		static ListNode getHeadB() {
 			return nodeB[0];
+		}
+	}
+	
+	static class Cycle {
+		/**
+		 0,1,2,3,4,5->3
+		 */
+		static ListNode getHead() {
+			ListNode[] node = new ListNode[6];
+			for(int i = 5; i >= 0; i--) {
+				node[i] = new ListNode(i);
+				node[i].hasCycle = true;
+				if( i != 5) {
+					node[i].next = node[i+1];
+				}
+			}
+			node[5].next = node[3];
+			return node[0];
 		}
 	}
 }

@@ -25,6 +25,41 @@ public class ListNode {
 			return "ListNode [val=" + val + ", next=" + next + "]";
 		}
 	}
+	
+	static class General {
+		/*
+		 * 
+	 	A:          a1 → a2 → a3 → a4 → a4
+		B:     b1 → b2 → b3 → b4 → b5 → b6
+		 * */
+		static ListNode[] nodeA;
+		static ListNode[] nodeB;
+		
+		static {
+			nodeA = new ListNode[5];
+			for(int i = 4; i >= 0; i--) {
+				nodeA[i] = new ListNode(i);
+				if( i != 4) {
+					nodeA[i].next = nodeA[i+1];
+				}
+			}
+			nodeB = new ListNode[6];
+			for(int i = 5; i >= 0; i--) {
+				nodeB[i] = new ListNode(i);
+				if( i != 5) {
+					nodeB[i].next = nodeB[i+1];
+				}
+			}
+		}
+		
+		static ListNode getHeadA() {
+			return nodeA[0];
+		}
+		
+		static ListNode getHeadB() {
+			return nodeB[0];
+		}
+	}
 
 	static class Intersection {
 		

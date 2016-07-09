@@ -15,7 +15,8 @@
     <module>how-tomcat-works</module>
     <module>roadshow-leetcode</module>
     <module>roadshow-share</module>
-  </modules>  
+    <module>roadshow-swagger</module>
+	</modules>  
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -208,17 +209,6 @@
 			<groupId>org.apache.thrift</groupId>
 			<artifactId>libthrift</artifactId>
 			<version>0.9.2</version>
-		</dependency>
-		<!-- drools：http://www.drools.org/ -->
-		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>drools-core</artifactId>
-			<version>6.2.0.Final</version>
-		</dependency>
-		<dependency>  
-		    <groupId>org.drools</groupId>  
-		    <artifactId>drools-compiler</artifactId>  
-		    <version>6.2.0.Final</version>  
 		</dependency>
 	</dependencies>  
 

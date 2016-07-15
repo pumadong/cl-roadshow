@@ -15,7 +15,23 @@ public class Leetcode6 {
 			A P L S I I G
 			Y   I   R
 		 * */
-		System.out.println(solution.convert("PAYPALISHIRING", 3));
+		/*
+		 * 用数字表示，3行，是这样
+			0   4   8
+			1 3 5 7 9
+			2   6   
+		 * */
+		/*
+		 * 用数字表示，4行，是这样
+			0    6
+			2  5 7
+			2 4  8
+			3    9
+		 * */
+		// 所以，只是一个找规律的题，找出规律；或者知道ZigZag的规律，这个题就好做了，规则如下：
+		// 1、任意一行，两个列之间的间隔为step，step = 2 * (总行数 - 1)
+		// 2、除了第一行和最后一行，斜线上有数字，数字的下标 = j + step -2*row，j是上一个列的坐标，step是两个列的间隔，row是行号（0开始）
+		System.out.println(solution.convert("PAYPALISHIRING", 1));
 	}
 	
 	// http://www.tuicool.com/articles/bAbyqii

@@ -37,4 +37,28 @@
    from student s
    <include refid="where"/>
   </select>
+  <select id="getStudentListByIds" resultMap="BaseResultMap">
+   select 
+   <include refid="Base_Column_List" />
+   from student s
+   where id in
+   <foreach collection="ids" item="id"  open="(" separator="," close=")">
+       #{id}
+   </foreach>  
+   limit #{limit}  
+  </select>  
+  <select id="getStudentListLessId" resultMap="BaseResultMap">
+   select 
+   <include refid="Base_Column_List" />
+   from student s
+   where id <![CDATA[ < ]]> #{id}   
+  </select>
+  <insert id="batchInsert">
+      insert into student(name, teacher_id, score, create_person, create_date)
+      values
+      <foreach collection="recordList" item="record" separator=",">
+		(#{record.name,jdbcType=VARCHAR}, #{record.teacherId,jdbcType=INTEGER}, #{record.score,jdbcType=INTEGER}, 
+	      #{record.createPerson,jdbcType=VARCHAR}, #{record.createDate,jdbcType=TIMESTAMP})
+      </foreach>
+  </insert>  
 </mapper>

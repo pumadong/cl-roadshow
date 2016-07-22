@@ -39,4 +39,27 @@ public interface StudentMapper {
      * @return
      */
     List<Student> getStudentListBySearch(StudentSearchModel searchModel,RowBounds rowBounds);
+    
+    /**
+     * 根据ID列表查询学生List
+     * @param ids
+     * @param limit
+     * @return
+     */
+    List<Student> getStudentListByIds(@Param("ids") List<Integer> ids, @Param("limit") Integer limit);
+    
+    /**
+     * 查询小于某个ID的学生列表，注意<的处理
+     * @param ids
+     * @param limit
+     * @return
+     */
+    List<Student> getStudentListLessId(@Param("id") Integer id);
+    
+    /**
+     * 批量插入
+     * @param recordList
+     * @return
+     */
+    int batchInsert(@Param("recordList") List<Student> recordList);
 }

@@ -17,12 +17,23 @@ public class ByteBufferDemo {
 	
 	public static void main(String[] args) throws IOException {
 		
+		// nio演示
 		channelShow();
 		
+		// 编码解码
 		String sendString="你好,服务器!";
 	    ByteBuffer sendBuffer = ByteBuffer.wrap(sendString.getBytes("UTF-8"));
 	    Charset cs = Charset.forName ("UTF-8");
 	    System.out.println(cs.decode(sendBuffer).toString());
+	    
+	    // zookeeper的4字符命令的int值
+	    // 在zookeeper的传输协议中，前4位代表要传输的长度；而这些数字，代表的是命令，请求方式：echo envi | nc localhost 2181
+        String[] zookeeper4Letters = new String[] {"conf","cons","crst","dump",
+        		"envi","gtmk","stmk","srst","srvr","stat","wchc","wchp","wchs","mntr","isro"};
+        int i = 0;
+        for(String s : zookeeper4Letters) {
+        	System.out.println(++i + "." + s + "." + ByteBuffer.wrap(s.getBytes()).getInt());
+        }
 	}
 
 	public static void channelShow() throws IOException {

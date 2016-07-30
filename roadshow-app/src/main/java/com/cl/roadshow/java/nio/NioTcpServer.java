@@ -16,7 +16,16 @@ import org.slf4j.LoggerFactory;
 /**
  * nio 基本演示
  * 
- * http://m.blog.csdn.net/blog/shirdrn_11109/6263692
+ * 理解几个思想
+ * 
+ * 1、每个channel只对应一个SelectionKey，在register时产生，所以，只能改变interestOps()，不能重复register()
+ * 2、任何复杂一点的通讯应用，都要定协议，比如：我本次发送数据长度多长，哪几位是长度标记，这样接收方才好根据协议进行数据处理
+ * 3、以socket来说，nio编程模型，比io模型编程，复杂很多，但带来的好处是单台机器可以支持更多的客户端连接，这是因为：
+ *    a、相对于阻塞io编程模型，服务器不用每来一个连接就开一个线程处理，不会受制于服务器可以开的线程数；
+ *    b、如果说我在服务器端用线程池，任务过多进入队列来提高性能呢？想一想，这还是阻塞io吗？
+ *    c、使用基础的非阻塞io进行通讯，对于上层应用来说，我可以同步返回给调用者，也可以异步返回给调用者；所以阻塞非阻塞和同步异步，是两个维度的东西。
+ * 
+ * http://blog.csdn.net/shirdrn/article/details/6263692
  */
 public class NioTcpServer extends Thread {
 

@@ -8,11 +8,7 @@ import java.nio.channels.SocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * nio 基本演示
- * 
- * http://m.blog.csdn.net/blog/shirdrn_11109/6263692
- */
+
 public class NioTcpClient {
 
     private static final Logger log = LoggerFactory.getLogger("console");

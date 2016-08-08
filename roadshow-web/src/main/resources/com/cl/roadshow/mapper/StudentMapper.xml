@@ -61,4 +61,16 @@
 	      #{record.createPerson,jdbcType=VARCHAR}, #{record.createDate,jdbcType=TIMESTAMP})
       </foreach>
   </insert>  
+  <insert id="saveBatch">
+      insert into student(name, teacher_id, score, create_person, create_date)
+      values
+      <foreach collection="recordList" item="record" separator=",">
+		(#{record.name,jdbcType=VARCHAR}, #{record.teacherId,jdbcType=INTEGER}, #{record.score,jdbcType=INTEGER}, 
+	      #{record.createPerson,jdbcType=VARCHAR}, #{record.createDate,jdbcType=TIMESTAMP})
+      </foreach>
+      on duplicate key update 
+      name = values(name),
+      teacher_id = values(teacher_id),
+      score = values(score)
+  </insert>   
 </mapper>

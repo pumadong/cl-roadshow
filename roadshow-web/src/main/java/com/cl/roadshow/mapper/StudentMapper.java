@@ -62,4 +62,11 @@ public interface StudentMapper {
      * @return
      */
     int batchInsert(@Param("recordList") List<Student> recordList);
+    
+    /**
+     * 批量存储：插入或者更新
+     * @param recordList
+     * @return
+     */
+    int saveBatch(@Param("recordList")List<Student> recordList);
 }

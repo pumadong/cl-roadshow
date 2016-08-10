@@ -1,9 +1,12 @@
 package com.cl.roadshow.controller;
 
+import java.io.BufferedOutputStream;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -71,11 +74,34 @@ public class SpringMVCDemo {
 		return "SpringMVCDemo.getPersonByName:" + message;
 	}
 	
-   @ResponseBody
+	@ResponseBody
     @RequestMapping(value = "/getRequest", method = RequestMethod.GET)
     public String getRequest() {
        HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
        
        return "request.getName()：" + request.getParameter("name");
+    }
+	
+	@ResponseBody
+    @RequestMapping(value = "/downloadCsv", method = RequestMethod.GET)
+    public String downloadCsv(HttpServletResponse response) {
+		String fileName;
+		try {
+			fileName = URLEncoder.encode("xxx.csv", "UTF-8");
+			response.setContentType("application/x-excel;charset=UTF-8");
+	        response.setHeader("Content-Disposition",
+	                "attachment; filename=" + fileName);
+	        StringBuilder sb = new StringBuilder();
+	        sb.append("id,name");
+	        sb.append("\r\n");
+	        sb.append("1,张三");
+	        BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
+	        bos.write(sb.toString().getBytes("UTF-8"));
+	        bos.flush();
+	        bos.close();
+	        return "success";
+		} catch (Exception e) {
+			return "fail";
+		}
     }
 }

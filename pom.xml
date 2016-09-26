@@ -16,6 +16,7 @@
     <module>roadshow-leetcode</module>
     <module>roadshow-share</module>
     <module>roadshow-swagger</module>
+    <module>roadshow-zookeeper</module>
 	</modules>  
 
 	<properties>

@@ -18,5 +18,18 @@
 		    <artifactId>zookeeper</artifactId>
 		    <version>3.4.8</version>
 		</dependency>
+		<!-- zkclient -->
+		<!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient -->
+<!-- 		<dependency>
+		    <groupId>com.github.sgroschupf</groupId>
+		    <artifactId>zkclient</artifactId>
+		    <version>0.1</version>
+		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/com.101tec/zkclient -->
+		<dependency>
+		    <groupId>com.101tec</groupId>
+		    <artifactId>zkclient</artifactId>
+		    <version>0.9</version>
+		</dependency>
 	</dependencies>
 </project>

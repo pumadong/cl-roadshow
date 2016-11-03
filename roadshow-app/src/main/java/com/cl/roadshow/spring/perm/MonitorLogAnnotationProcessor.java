@@ -12,6 +12,18 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class MonitorLogAnnotationProcessor {
+	/**
+	 * 也可以放在XML配置文件中
+	 * 
+		<bean id="logInterceptor" class="xx.xx"></bean>
+		<aop:config>  
+			<!-- 设置切面名，及切面类 -->  
+			<aop:aspect id="logAspect" ref="logInterceptor">  
+				<!-- 运行前方法配置，先择要执行的方法 ，并设置切入点  -->  
+				<aop:around method="aroundMethod" pointcut="execution(* *(..)) &amp;&amp; @annotation(monitorLog)" />   
+			</aop:aspect>  
+		</aop:config>
+	 */
 
     @Around("execution(* *(..)) && @annotation(log)")
     public Object aroundMethod(ProceedingJoinPoint pjd ,MonitorLog log) throws Throwable {

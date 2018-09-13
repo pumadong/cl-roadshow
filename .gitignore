@@ -35,6 +35,7 @@ target
 
 .idea
 .idea/*
+*.iml
 
 Thumbs.db
 
